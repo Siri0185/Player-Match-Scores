@@ -135,7 +135,7 @@ app.get("/matches/:matchId/players", async (request, response) => {
 
 app.get("/players/:playerId/playerScores/", async (request, response) => {
   const { playerId } = request.params;
-  const getmatchPlayersQuery = `
+  const getMatchPlayersQuery = `
     SELECT
       player_id AS playerId,
       player_name AS playerName,
@@ -146,7 +146,7 @@ app.get("/players/:playerId/playerScores/", async (request, response) => {
       NATURAL JOIN player_details
     WHERE
       player_id = ${playerId};`;
-  const playersMatchDetails = await database.get(getmatchPlayersQuery);
+  const playersMatchDetails = await database.get(getMatchPlayersQuery);
   response.send(playersMatchDetails);
 });
 module.exports = app;
